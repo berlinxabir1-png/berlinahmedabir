@@ -55,8 +55,8 @@ const Footer = () => (
         © {new Date().getFullYear()} Berlin Ahmed Abir. This website was created by Berlin Ahmed Abir.
       </p>
       <div className="flex items-center space-x-6">
-        <a href="https://www.facebook.com/abirahmedberlin/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">Facebook</a>
-        <a href="https://www.instagram.com/abirahmedberlin/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">Instagram</a>
+        <a href="https://www.facebook.com/nayyembinsaikat" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">Facebook</a>
+        <a href="https://www.instagram.com/saikat_69x" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">Instagram</a>
       </div>
     </div>
   </footer>
