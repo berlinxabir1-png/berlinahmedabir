@@ -116,18 +116,18 @@ export const About: React.FC = () => {
                   </div>
                   <div>
                     <div className="text-xs text-slate-500 uppercase">Next Destination</div>
-                    <div className="text-sm font-medium">Bandarban, Bangladesh</div>
+                    <div className="text-sm font-medium">Cox's Bazar, Bangladesh</div>
                   </div>
                 </div>
                 <div className="relative h-24 rounded-lg overflow-hidden">
                   <img 
-                    src="https://picsum.photos/seed/bandarban/800/400" 
-                    alt="Bandarban" 
+                    src="https://picsum.photos/seed/coxsbazar_next/800/400" 
+                    alt="Cox's Bazar" 
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     referrerPolicy="no-referrer"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent flex items-end p-2">
-                    <span className="text-[10px] text-white font-medium">The queen of hills</span>
+                    <span className="text-[10px] text-white font-medium">The world's longest natural sea beach</span>
                   </div>
                 </div>
               </motion.div>
