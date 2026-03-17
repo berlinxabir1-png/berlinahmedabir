@@ -6,6 +6,8 @@ import { About } from './components/About';
 import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
 import { FunMode } from './components/FunMode';
+import { PersonalityRater } from './components/PersonalityRater';
+import { VoteSystem } from './components/VoteSystem';
 import { Contact } from './components/Contact';
 import { CustomCursor } from './components/CustomCursor';
 import { AnimatedBackground } from './components/AnimatedBackground';
@@ -51,11 +53,11 @@ const Footer = () => (
         <span className="text-white"> AHMED ABIR</span>
       </div>
       <p className="text-slate-500 text-sm">
-        © {new Date().getFullYear()} Berlin Ahmed Abir. Built with React & Framer Motion.
+        © {new Date().getFullYear()} Berlin Ahmed Abir. This website was created by Berlin Ahmed Abir.
       </p>
       <div className="flex items-center space-x-6">
-        <a href="#" className="text-slate-400 hover:text-white transition-colors">Facebook</a>
-        <a href="#" className="text-slate-400 hover:text-white transition-colors">Instagram</a>
+        <a href="https://www.facebook.com/abirahmedberlin/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">Facebook</a>
+        <a href="https://www.instagram.com/abirahmedberlin/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">Instagram</a>
       </div>
     </div>
   </footer>
@@ -88,6 +90,8 @@ export default function App() {
         <Skills />
         <Projects />
         <FunMode />
+        <PersonalityRater />
+        <VoteSystem />
         <Contact />
       </main>
 

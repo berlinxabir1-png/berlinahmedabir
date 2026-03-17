@@ -69,38 +69,69 @@ export const About: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-xs text-slate-500 uppercase">Relation Status</div>
-                  <div className="text-sm font-medium">In a relation with (Fa****)</div>
+                  <div className="text-sm font-medium">Taken</div>
                 </div>
               </div>
             </div>
 
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="glass p-4 rounded-xl overflow-hidden group"
-            >
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="p-2 bg-neon-cyan/10 rounded-lg text-neon-cyan">
-                  <Plane size={20} />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="glass p-4 rounded-xl overflow-hidden group"
+              >
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="p-2 bg-neon-cyan/10 rounded-lg text-neon-cyan">
+                    <Plane size={20} />
+                  </div>
+                  <div>
+                    <div className="text-xs text-slate-500 uppercase">Recent Travel</div>
+                    <div className="text-sm font-medium">Cox's Bazar, Bangladesh</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-xs text-slate-500 uppercase">Recent Travel</div>
-                  <div className="text-sm font-medium">Cox's Bazar, Bangladesh</div>
+                <div className="relative h-24 rounded-lg overflow-hidden">
+                  <img 
+                    src="https://picsum.photos/seed/coxsbazar/800/400" 
+                    alt="Cox's Bazar" 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent flex items-end p-2">
+                    <span className="text-[10px] text-white font-medium">World's longest sea beach</span>
+                  </div>
                 </div>
-              </div>
-              <div className="relative h-32 rounded-lg overflow-hidden">
-                <img 
-                  src="https://picsum.photos/seed/coxsbazar/800/400" 
-                  alt="Cox's Bazar" 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent flex items-end p-3">
-                  <span className="text-xs text-white font-medium">The world's longest natural sea beach</span>
+              </motion.div>
+
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="glass p-4 rounded-xl overflow-hidden group"
+              >
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="p-2 bg-neon-emerald/10 rounded-lg text-neon-emerald">
+                    <MapPin size={20} />
+                  </div>
+                  <div>
+                    <div className="text-xs text-slate-500 uppercase">Next Destination</div>
+                    <div className="text-sm font-medium">Bandarban, Bangladesh</div>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+                <div className="relative h-24 rounded-lg overflow-hidden">
+                  <img 
+                    src="https://picsum.photos/seed/bandarban/800/400" 
+                    alt="Bandarban" 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent flex items-end p-2">
+                    <span className="text-[10px] text-white font-medium">The queen of hills</span>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </motion.div>
 
           <motion.div

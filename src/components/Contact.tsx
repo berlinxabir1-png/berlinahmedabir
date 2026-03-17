@@ -54,7 +54,11 @@ export const Contact: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-xs text-slate-500 uppercase tracking-widest">Socials</div>
-                  <div className="text-lg font-medium">@berlin_abir</div>
+                  <div className="flex space-x-3 mt-1">
+                    <a href="https://www.facebook.com/abirahmedberlin/" target="_blank" rel="noopener noreferrer" className="text-lg font-medium hover:text-neon-emerald transition-colors">Facebook</a>
+                    <span className="text-slate-600">/</span>
+                    <a href="https://www.instagram.com/abirahmedberlin/" target="_blank" rel="noopener noreferrer" className="text-lg font-medium hover:text-neon-emerald transition-colors">Instagram</a>
+                  </div>
                 </div>
               </div>
             </div>

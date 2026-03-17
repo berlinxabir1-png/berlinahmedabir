@@ -8,6 +8,8 @@ const navLinks = [
   { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
   { name: 'Projects', href: '#projects' },
+  { name: 'AI Rater', href: '#personality-rater' },
+  { name: 'Vote', href: '#vote' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -60,8 +62,8 @@ export const Navbar: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             className="flex items-center space-x-4 ml-4 border-l border-white/10 pl-6"
           >
-            <a href="#" className="text-slate-400 hover:text-white transition-colors"><Facebook size={18} /></a>
-            <a href="#" className="text-slate-400 hover:text-white transition-colors"><Instagram size={18} /></a>
+            <a href="https://www.facebook.com/abirahmedberlin/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors"><Facebook size={18} /></a>
+            <a href="https://www.instagram.com/abirahmedberlin/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors"><Instagram size={18} /></a>
           </motion.div>
         </div>
 
