@@ -45,7 +45,7 @@ export const Contact: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-xs text-slate-500 uppercase tracking-widest">Email Me</div>
-                  <div className="text-lg font-medium">hello@alexrivera.dev</div>
+                  <div className="text-lg font-medium">berlin@abir.dev</div>
                 </div>
               </div>
               <div className="flex items-center space-x-4 group">
@@ -54,7 +54,7 @@ export const Contact: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-xs text-slate-500 uppercase tracking-widest">Socials</div>
-                  <div className="text-lg font-medium">@alexrivera_dev</div>
+                  <div className="text-lg font-medium">@berlin_abir</div>
                 </div>
               </div>
             </div>
@@ -87,7 +87,7 @@ export const Contact: React.FC = () => {
                     <input 
                       required
                       type="text" 
-                      placeholder="John Doe"
+                      placeholder="Enter your name"
                       className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-neon-emerald focus:bg-white/10 transition-all"
                     />
                   </div>
@@ -100,7 +100,7 @@ export const Contact: React.FC = () => {
                     <input 
                       required
                       type="email" 
-                      placeholder="john@example.com"
+                      placeholder="your@email.com"
                       className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-neon-emerald focus:bg-white/10 transition-all"
                     />
                   </div>

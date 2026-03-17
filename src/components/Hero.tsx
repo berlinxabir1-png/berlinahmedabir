@@ -124,7 +124,7 @@ export const Hero: React.FC = () => {
             
             <div className="absolute inset-2 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1578632292335-df3abbb0d586?q=80&w=1000&auto=format&fit=crop" 
+                src="https://img.freepik.com/premium-vector/vector-teenager-wearing-cool-outfit_1310295-648.jpg?semt=ais_hybrid&w=740&q=80" 
                 alt="Profile" 
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                 referrerPolicy="no-referrer"
