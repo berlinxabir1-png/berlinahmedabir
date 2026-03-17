@@ -38,7 +38,7 @@ const LoadingScreen = () => (
       transition={{ delay: 0.5 }}
       className="mt-8 text-xl font-bold tracking-[0.2em] text-white"
     >
-      BERLIN<span className="text-neon-emerald"> ABIR</span>
+      BERLIN<span className="text-neon-emerald"> AHMED ABIR</span>
     </motion.div>
   </motion.div>
 );
@@ -48,7 +48,7 @@ const Footer = () => (
     <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
       <div className="text-xl font-bold tracking-tighter">
         <span className="text-neon-emerald">BERLIN</span>
-        <span className="text-white"> ABIR</span>
+        <span className="text-white"> AHMED ABIR</span>
       </div>
       <p className="text-slate-500 text-sm">
         © {new Date().getFullYear()} Berlin Ahmed Abir. Built with React & Framer Motion.

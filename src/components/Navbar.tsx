@@ -38,7 +38,7 @@ export const Navbar: React.FC = () => {
           className="text-2xl font-bold tracking-tighter"
         >
           <span className="text-neon-emerald">BERLIN</span>
-          <span className="text-white"> ABIR</span>
+          <span className="text-white"> AHMED ABIR</span>
         </motion.a>
 
         {/* Desktop Links */}
