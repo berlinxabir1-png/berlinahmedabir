@@ -6,7 +6,6 @@ import { About } from './components/About';
 import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
 import { FunMode } from './components/FunMode';
-import { PersonalityRater } from './components/PersonalityRater';
 import { VoteSystem } from './components/VoteSystem';
 import { Contact } from './components/Contact';
 import { CustomCursor } from './components/CustomCursor';
@@ -90,7 +89,6 @@ export default function App() {
         <Skills />
         <Projects />
         <FunMode />
-        <PersonalityRater />
         <VoteSystem />
         <Contact />
       </main>

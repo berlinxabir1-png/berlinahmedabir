@@ -18,10 +18,10 @@ export const About: React.FC = () => {
           <div className="w-20 h-1 bg-neon-emerald rounded-full" />
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-3xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="space-y-6"
           >
@@ -131,34 +131,6 @@ export const About: React.FC = () => {
                   </div>
                 </div>
               </motion.div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-2 gap-4"
-          >
-            <div className="space-y-4">
-              <div className="glass p-6 rounded-2xl h-40 flex flex-col justify-end group hover:bg-neon-emerald/5 transition-colors">
-                <div className="text-3xl font-bold text-neon-emerald mb-1">99%</div>
-                <div className="text-sm text-slate-400">Coffee Concentration</div>
-              </div>
-              <div className="glass p-6 rounded-2xl h-60 flex flex-col justify-end group hover:bg-neon-violet/5 transition-colors">
-                <div className="text-3xl font-bold text-neon-violet mb-1">10k+</div>
-                <div className="text-sm text-slate-400">Lines of Code Written</div>
-              </div>
-            </div>
-            <div className="space-y-4 pt-8">
-              <div className="glass p-6 rounded-2xl h-60 flex flex-col justify-end group hover:bg-neon-cyan/5 transition-colors">
-                <div className="text-3xl font-bold text-neon-cyan mb-1">24/7</div>
-                <div className="text-sm text-slate-400">Creative Thinking</div>
-              </div>
-              <div className="glass p-6 rounded-2xl h-40 flex flex-col justify-end group hover:bg-neon-pink/5 transition-colors">
-                <div className="text-3xl font-bold text-neon-pink mb-1">0</div>
-                <div className="text-sm text-slate-400">Regrets (Mostly)</div>
-              </div>
             </div>
           </motion.div>
         </div>
