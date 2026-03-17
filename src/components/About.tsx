@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { User, GraduationCap, Heart, MapPin, Coffee } from 'lucide-react';
+import { User, GraduationCap, Heart, MapPin, Coffee, Plane } from 'lucide-react';
 
 export const About: React.FC = () => {
   return (
@@ -50,8 +50,8 @@ export const About: React.FC = () => {
                   <GraduationCap size={20} />
                 </div>
                 <div>
-                  <div className="text-xs text-slate-500 uppercase">Dream University</div>
-                  <div className="text-sm font-medium">Dhaka University</div>
+                  <div className="text-xs text-slate-500 uppercase">Current College</div>
+                  <div className="text-sm font-medium">Naziur Rahman College, Bhola (12th Grade)</div>
                 </div>
               </div>
               <div className="glass p-4 rounded-xl flex items-center space-x-3">
@@ -69,10 +69,38 @@ export const About: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-xs text-slate-500 uppercase">Relation Status</div>
-                  <div className="text-sm font-medium">Single</div>
+                  <div className="text-sm font-medium">In a relation with (Fa****)</div>
                 </div>
               </div>
             </div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="glass p-4 rounded-xl overflow-hidden group"
+            >
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="p-2 bg-neon-cyan/10 rounded-lg text-neon-cyan">
+                  <Plane size={20} />
+                </div>
+                <div>
+                  <div className="text-xs text-slate-500 uppercase">Recent Travel</div>
+                  <div className="text-sm font-medium">Cox's Bazar, Bangladesh</div>
+                </div>
+              </div>
+              <div className="relative h-32 rounded-lg overflow-hidden">
+                <img 
+                  src="https://picsum.photos/seed/coxsbazar/800/400" 
+                  alt="Cox's Bazar" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent flex items-end p-3">
+                  <span className="text-xs text-white font-medium">The world's longest natural sea beach</span>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
 
           <motion.div

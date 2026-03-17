@@ -141,7 +141,7 @@ export const Hero: React.FC = () => {
                 <Cake size={16} className="text-neon-emerald" />
                 <div className="text-neon-emerald font-bold text-sm">Birthday</div>
               </div>
-              <div className="text-[10px] text-slate-200 mb-1">Jan 08, 2005</div>
+              <div className="text-[10px] text-slate-200 mb-1">Jan 08, 1947</div>
               <BirthdayCountdown />
             </motion.div>
             
