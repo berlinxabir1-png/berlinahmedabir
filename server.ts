@@ -2,6 +2,7 @@ import express from "express";
 import { createServer as createViteServer } from "vite";
 import path from "path";
 import { createClient } from "@supabase/supabase-js";
+import nodemailer from "nodemailer";
 
 // Supabase initialization
 const getSupabase = () => {
@@ -14,6 +15,15 @@ const getSupabase = () => {
   
   return createClient(url, key);
 };
+
+// Nodemailer transporter setup
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
 
 async function startServer() {
   const app = express();
@@ -103,6 +113,31 @@ async function startServer() {
     } catch (err) {
       console.error("Supabase rating error:", err);
       res.status(500).json({ error: "Failed to save rating" });
+    }
+  });
+
+  app.post("/api/contact", async (req, res) => {
+    const { name, email, message } = req.body;
+
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      console.error("Email credentials not configured");
+      return res.status(500).json({ error: "Email service not configured" });
+    }
+
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: 'canikissyousuzu@gmail.com',
+      subject: `New Portfolio Message from ${name}`,
+      text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+      replyTo: email
+    };
+
+    try {
+      await transporter.sendMail(mailOptions);
+      res.json({ success: true });
+    } catch (error) {
+      console.error("Email send error:", error);
+      res.status(500).json({ error: "Failed to send email" });
     }
   });
 

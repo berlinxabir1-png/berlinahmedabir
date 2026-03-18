@@ -10,7 +10,7 @@ const projects = [
     tags: ['React', 'Logic', 'Productivity'],
     github: '#',
     live: '#',
-    color: 'from-neon-cyan to-blue-600',
+    color: 'from-blue-500 to-blue-600',
     type: 'Concept Project'
   },
   {
@@ -20,7 +20,7 @@ const projects = [
     tags: ['Python', 'Automation', 'Efficiency'],
     github: '#',
     live: '#',
-    color: 'from-neon-emerald to-teal-600',
+    color: 'from-emerald-500 to-teal-600',
     type: 'Private Project'
   },
   {
@@ -30,28 +30,28 @@ const projects = [
     tags: ['React', 'MySQL', 'Architecture'],
     github: '#',
     live: '#',
-    color: 'from-neon-violet to-purple-600',
+    color: 'from-indigo-500 to-purple-600',
     type: 'Concept Project'
   },
 ];
 
 export const Projects: React.FC = () => {
   return (
-    <section id="projects" className="py-24 px-6">
+    <section id="projects" className="py-32 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col items-center mb-16">
+        <div className="flex flex-col items-center mb-20">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold mb-4"
+            className="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-black dark:text-white"
           >
-            Featured <span className="text-neon-cyan">Projects</span>
+            Featured <span className="text-ios-blue">Projects</span>
           </motion.h2>
-          <div className="w-20 h-1 bg-neon-cyan rounded-full" />
+          <div className="w-16 h-1.5 bg-ios-blue rounded-full" />
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-10">
           {projects.map((project, i) => (
             <motion.div
               key={project.title}
@@ -59,11 +59,10 @@ export const Projects: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.2 }}
-              className="group relative glass rounded-3xl overflow-hidden border-white/5 hover:border-white/20 transition-all duration-500"
+              className="group ios-card !p-0 overflow-hidden hover:shadow-2xl transition-all duration-500"
             >
               {/* Image Container */}
               <div className="relative h-64 overflow-hidden">
-                <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 group-hover:opacity-40 transition-opacity duration-500 z-10`} />
                 <img 
                   src={project.image} 
                   alt={project.title}
@@ -73,7 +72,7 @@ export const Projects: React.FC = () => {
                 
                 {/* Overlay Badge */}
                 <div className="absolute top-4 right-4 z-20">
-                  <span className="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-[10px] font-bold text-neon-cyan border border-neon-cyan/30">
+                  <span className="px-4 py-1.5 bg-black/40 backdrop-blur-md rounded-full text-[10px] font-bold text-white border border-white/20">
                     {project.type}
                   </span>
                 </div>
@@ -83,18 +82,18 @@ export const Projects: React.FC = () => {
               <div className="p-8">
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map(tag => (
-                    <span key={tag} className="text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-md bg-white/5 text-slate-400">
+                    <span key={tag} className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-lg bg-ios-blue/10 text-ios-blue">
                       {tag}
                     </span>
                   ))}
                 </div>
-                <h3 className="text-2xl font-bold mb-3 group-hover:text-neon-cyan transition-colors">{project.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                <h3 className="text-2xl font-bold mb-3 text-black dark:text-white group-hover:text-ios-blue transition-colors">{project.title}</h3>
+                <p className="text-ios-gray text-sm font-medium leading-relaxed mb-8">
                   {project.description}
                 </p>
                 
-                <div className="flex items-center space-x-2 text-sm font-bold text-slate-500 italic">
-                  <Code size={16} />
+                <div className="flex items-center space-x-3 text-sm font-bold text-ios-gray/60 italic">
+                  <Code size={18} />
                   <span>Internal Development</span>
                 </div>
               </div>

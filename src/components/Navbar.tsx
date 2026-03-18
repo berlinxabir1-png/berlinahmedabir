@@ -27,48 +27,43 @@ export const Navbar: React.FC = () => {
   return (
     <nav
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4',
-        isScrolled ? 'bg-black/20 backdrop-blur-md border-b border-white/5 py-3' : 'bg-transparent'
+        'fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 w-[90%] max-w-5xl rounded-3xl px-6 py-3',
+        isScrolled 
+          ? 'ios-glass shadow-lg py-2' 
+          : 'bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/10'
       )}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <div className="flex items-center justify-between">
         <motion.a
           href="#home"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="text-2xl font-bold tracking-tighter"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-xl font-bold tracking-tight flex items-center space-x-2"
         >
-          <span className="text-neon-emerald">BERLIN</span>
-          <span className="text-white"> AHMED ABIR</span>
+          <div className="w-8 h-8 rounded-[22%] bg-ios-blue flex items-center justify-center text-white text-xs">B</div>
+          <span className="text-black dark:text-white hidden sm:inline">Berlin Ahmed Abir</span>
         </motion.a>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link, i) => (
-            <motion.a
+        <div className="hidden md:flex items-center space-x-6">
+          {navLinks.map((link) => (
+            <a
               key={link.name}
               href={link.href}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              className="text-sm font-medium text-slate-400 hover:text-neon-emerald transition-colors"
+              className="text-sm font-semibold text-ios-gray hover:text-ios-blue transition-colors"
             >
               {link.name}
-            </motion.a>
+            </a>
           ))}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="flex items-center space-x-4 ml-4 border-l border-white/10 pl-6"
-          >
-            <a href="https://www.facebook.com/abirahmedberlin/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors"><Facebook size={18} /></a>
-            <a href="https://www.instagram.com/abirahmedberlin/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors"><Instagram size={18} /></a>
-          </motion.div>
+          <div className="flex items-center space-x-4 ml-4 border-l border-black/5 dark:border-white/10 pl-6">
+            <a href="https://www.facebook.com/abirahmedberlin/" target="_blank" rel="noopener noreferrer" className="text-ios-gray hover:text-ios-blue transition-colors"><Facebook size={18} /></a>
+            <a href="https://www.instagram.com/abirahmedberlin/" target="_blank" rel="noopener noreferrer" className="text-ios-gray hover:text-ios-blue transition-colors"><Instagram size={18} /></a>
+          </div>
         </div>
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-white p-2"
+          className="md:hidden text-ios-blue p-2 active:scale-90 transition-transform"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X /> : <Menu />}
@@ -79,10 +74,10 @@ export const Navbar: React.FC = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-dark mt-4 rounded-2xl overflow-hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="md:hidden ios-glass mt-4 rounded-2xl overflow-hidden border-none"
           >
             <div className="flex flex-col p-6 space-y-4">
               {navLinks.map((link) => (
@@ -90,7 +85,7 @@ export const Navbar: React.FC = () => {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-lg font-medium text-slate-300 hover:text-neon-emerald"
+                  className="text-lg font-semibold text-black dark:text-white hover:text-ios-blue transition-colors"
                 >
                   {link.name}
                 </a>

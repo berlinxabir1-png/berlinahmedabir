@@ -4,18 +4,18 @@ import { User, GraduationCap, Heart, MapPin, Coffee, Plane } from 'lucide-react'
 
 export const About: React.FC = () => {
   return (
-    <section id="about" className="py-24 px-6 relative">
+    <section id="about" className="py-32 px-6 relative">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col items-center mb-16">
+        <div className="flex flex-col items-center mb-20">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold mb-4"
+            className="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-black dark:text-white"
           >
-            About <span className="text-neon-emerald">Me</span>
+            About <span className="text-ios-blue">Me</span>
           </motion.h2>
-          <div className="w-20 h-1 bg-neon-emerald rounded-full" />
+          <div className="w-16 h-1.5 bg-ios-blue rounded-full" />
         </div>
 
         <div className="max-w-5xl mx-auto">
@@ -23,143 +23,95 @@ export const About: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="space-y-8"
           >
-            <h3 className="text-2xl font-semibold text-white">
+            <h3 className="text-2xl md:text-3xl font-bold text-black dark:text-white leading-tight">
               I thrive at the intersection of logic and creativity.
             </h3>
-            <p className="text-slate-400 leading-relaxed">
-              I am deeply passionate about the art of coding, constantly pushing myself to build innovative solutions that challenge the status quo. I find immense satisfaction in dissecting complex problems and refining my technical craft every single day.
-            </p>
-            <p className="text-slate-400 leading-relaxed">
-              Beyond the terminal, I am a keen observer of history and politics, always seeking to understand the intricate systems and narratives that shape our modern world. This analytical mindset fuels both my personal growth and my professional approach to development.
-            </p>
+            <div className="space-y-6 text-lg text-ios-gray font-medium leading-relaxed">
+              <p>
+                I am deeply passionate about the art of coding, constantly pushing myself to build innovative solutions that challenge the status quo. I find immense satisfaction in dissecting complex problems and refining my technical craft every single day.
+              </p>
+              <p>
+                Beyond the terminal, I am a keen observer of history and politics, always seeking to understand the intricate systems and narratives that shape our modern world. This analytical mindset fuels both my personal growth and my professional approach to development.
+              </p>
+            </div>
 
-            <div className="grid grid-cols-2 gap-4 pt-4">
-              <div className="glass p-4 rounded-xl flex items-center space-x-3">
-                <div className="p-2 bg-neon-emerald/10 rounded-lg text-neon-emerald">
-                  <MapPin size={20} />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-8">
+              <div className="ios-card flex items-center space-x-4">
+                <div className="p-3 bg-ios-blue/10 rounded-2xl text-ios-blue">
+                  <MapPin size={24} />
                 </div>
                 <div>
-                  <div className="text-xs text-slate-500 uppercase">Current City</div>
-                  <div className="text-sm font-medium">Bhola, Bangladesh</div>
+                  <div className="text-[11px] text-ios-gray font-bold uppercase tracking-widest mb-0.5">Current City</div>
+                  <div className="text-base font-semibold text-black dark:text-white">Bhola, Bangladesh</div>
                 </div>
               </div>
-              <div className="glass p-4 rounded-xl flex items-center space-x-3">
-                <div className="p-2 bg-neon-violet/10 rounded-lg text-neon-violet">
-                  <GraduationCap size={20} />
+              <div className="ios-card flex items-center space-x-4">
+                <div className="p-3 bg-ios-blue/10 rounded-2xl text-ios-blue">
+                  <GraduationCap size={24} />
                 </div>
                 <div>
-                  <div className="text-xs text-slate-500 uppercase">Current College</div>
-                  <div className="text-sm font-medium">Naziur Rahman College, Bhola (12th Grade)</div>
+                  <div className="text-[11px] text-ios-gray font-bold uppercase tracking-widest mb-0.5">Current College</div>
+                  <div className="text-base font-semibold text-black dark:text-white">Naziur Rahman College (12th)</div>
                 </div>
               </div>
-              <div className="glass p-4 rounded-xl flex items-center space-x-3">
-                <div className="p-2 bg-neon-pink/10 rounded-lg text-neon-pink">
-                  <User size={20} />
+              <div className="ios-card flex items-center space-x-4">
+                <div className="p-3 bg-ios-blue/10 rounded-2xl text-ios-blue">
+                  <User size={24} />
                 </div>
                 <div>
-                  <div className="text-xs text-slate-500 uppercase">Born Place</div>
-                  <div className="text-sm font-medium">Dhaka, Bangladesh</div>
+                  <div className="text-[11px] text-ios-gray font-bold uppercase tracking-widest mb-0.5">Born Place</div>
+                  <div className="text-base font-semibold text-black dark:text-white">Dhaka, Bangladesh</div>
                 </div>
               </div>
-              <div className="glass p-4 rounded-xl flex items-center space-x-3">
-                <div className="p-2 bg-neon-pink/10 rounded-lg text-neon-pink">
-                  <Heart size={20} />
+              <div className="ios-card flex items-center space-x-4">
+                <div className="p-3 bg-ios-blue/10 rounded-2xl text-ios-blue">
+                  <Heart size={24} />
                 </div>
                 <div>
-                  <div className="text-xs text-slate-500 uppercase">Relation Status</div>
-                  <div className="text-sm font-medium">Taken</div>
+                  <div className="text-[11px] text-ios-gray font-bold uppercase tracking-widest mb-0.5">Relation Status</div>
+                  <div className="text-base font-semibold text-black dark:text-white">Taken</div>
                 </div>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-4">
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="glass p-4 rounded-xl overflow-hidden group"
-              >
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="p-2 bg-neon-cyan/10 rounded-lg text-neon-cyan">
-                    <Plane size={20} />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8">
+              {[
+                { label: 'Recent Travel', value: "Cox's Bazar", desc: "World's longest sea beach", seed: 'coxsbazar' },
+                { label: 'Next Destination', value: "Cox's Bazar", desc: "The world's longest natural sea beach", seed: 'coxsbazar_next' },
+                { label: 'Next Destination', value: "Bandarban", desc: "The queen of hills", seed: 'bandarban' }
+              ].map((item, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="ios-card !p-0 overflow-hidden group"
+                >
+                  <div className="p-5 flex items-center space-x-4">
+                    <div className="p-2.5 bg-ios-blue/10 rounded-xl text-ios-blue">
+                      {i === 0 ? <Plane size={20} /> : <MapPin size={20} />}
+                    </div>
+                    <div>
+                      <div className="text-[10px] text-ios-gray font-bold uppercase tracking-widest mb-0.5">{item.label}</div>
+                      <div className="text-sm font-semibold text-black dark:text-white">{item.value}</div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="text-xs text-slate-500 uppercase">Recent Travel</div>
-                    <div className="text-sm font-medium">Cox's Bazar, Bangladesh</div>
+                  <div className="relative h-32 overflow-hidden">
+                    <img 
+                      src={`https://picsum.photos/seed/${item.seed}/800/400`} 
+                      alt={item.value} 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+                      <span className="text-xs text-white font-medium">{item.desc}</span>
+                    </div>
                   </div>
-                </div>
-                <div className="relative h-24 rounded-lg overflow-hidden">
-                  <img 
-                    src="https://picsum.photos/seed/coxsbazar/800/400" 
-                    alt="Cox's Bazar" 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent flex items-end p-2">
-                    <span className="text-[10px] text-white font-medium">World's longest sea beach</span>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="glass p-4 rounded-xl overflow-hidden group"
-              >
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="p-2 bg-neon-emerald/10 rounded-lg text-neon-emerald">
-                    <MapPin size={20} />
-                  </div>
-                  <div>
-                    <div className="text-xs text-slate-500 uppercase">Next Destination</div>
-                    <div className="text-sm font-medium">Cox's Bazar, Bangladesh</div>
-                  </div>
-                </div>
-                <div className="relative h-24 rounded-lg overflow-hidden">
-                  <img 
-                    src="https://picsum.photos/seed/coxsbazar_next/800/400" 
-                    alt="Cox's Bazar" 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent flex items-end p-2">
-                    <span className="text-[10px] text-white font-medium">The world's longest natural sea beach</span>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="glass p-4 rounded-xl overflow-hidden group"
-              >
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="p-2 bg-neon-violet/10 rounded-lg text-neon-violet">
-                    <MapPin size={20} />
-                  </div>
-                  <div>
-                    <div className="text-xs text-slate-500 uppercase">Next Destination</div>
-                    <div className="text-sm font-medium">Bandarban, Bangladesh</div>
-                  </div>
-                </div>
-                <div className="relative h-24 rounded-lg overflow-hidden">
-                  <img 
-                    src="https://picsum.photos/seed/bandarban/800/400" 
-                    alt="Bandarban" 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent flex items-end p-2">
-                    <span className="text-[10px] text-white font-medium">The queen of hills</span>
-                  </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>
