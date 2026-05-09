@@ -1,19 +1,44 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Gamepad2, Music, Film, Camera, Bike, Pizza } from 'lucide-react';
+import { Gamepad2, Music, Film, Camera, Bike, Pizza, Heart, Coffee } from 'lucide-react';
 import { cn } from '../utils';
+import { usePortfolioData } from '../hooks/usePortfolioData';
 
-const hobbies = [
-  { name: 'Coding', icon: Gamepad2, color: 'text-red-500', desc: 'Building Logic' },
-  { name: 'Reading', icon: Music, color: 'text-blue-500', desc: 'Expanding Horizons' },
-  { name: 'Tech', icon: Film, color: 'text-yellow-500', desc: 'Exploring Trends' },
-  { name: 'Politics', icon: Camera, color: 'text-purple-500', desc: 'Global Systems' },
-  { name: 'History', icon: Bike, color: 'text-green-500', desc: 'Past Narratives' },
-  { name: 'Learning', icon: Pizza, color: 'text-orange-500', desc: 'Daily Growth' },
+interface Hobby {
+  name: string;
+  icon: string;
+  color: string;
+  description: string;
+}
+
+interface Movie {
+  title: string;
+  badge: string;
+  extra?: boolean;
+}
+
+const iconMap: Record<string, any> = {
+  Gamepad2, Music, Film, Camera, Bike, Pizza, Heart, Coffee
+};
+
+const defaultHobbies: Hobby[] = [
+  { name: 'Coding', icon: 'Gamepad2', color: 'text-red-500', description: 'Building Logic' },
+  { name: 'Reading', icon: 'Music', color: 'text-blue-500', description: 'Expanding Horizons' },
+  { name: 'Tech', icon: 'Film', color: 'text-yellow-500', description: 'Exploring Trends' },
+  { name: 'Politics', icon: 'Camera', color: 'text-purple-500', description: 'Global Systems' },
+  { name: 'History', icon: 'Bike', color: 'text-green-500', description: 'Past Narratives' },
+  { name: 'Learning', icon: 'Pizza', color: 'text-orange-500', description: 'Daily Growth' },
 ];
 
 export const FunMode: React.FC = () => {
   const [isFunMode, setIsFunMode] = useState(false);
+  const { data: hobbies } = usePortfolioData<Hobby[]>('hobbies', defaultHobbies);
+  
+  const movies: Movie[] = [
+    { title: 'Money Heist', badge: 'Series', extra: true },
+    { title: 'Lucky Bhaskar', badge: 'Must Watch' },
+    { title: 'Dirty', badge: 'Classic' }
+  ];
 
   return (
     <section className={cn(
@@ -27,7 +52,7 @@ export const FunMode: React.FC = () => {
             whileInView={{ opacity: 1 }}
             className="flex flex-col items-center"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center tracking-tight text-black dark:text-white">
+            <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center tracking-tight text-black">
               Beyond the <span className={isFunMode ? "text-ios-blue" : "text-ios-gray"}>Code</span>
             </h2>
             
@@ -57,29 +82,32 @@ export const FunMode: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-          {hobbies.map((hobby, i) => (
-            <motion.div
-              key={hobby.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              whileHover={{ scale: 1.05, rotate: isFunMode ? [0, -2, 2, 0] : 0 }}
-              className={cn(
-                "ios-card flex flex-col items-center text-center transition-all duration-500",
-                isFunMode ? "border-ios-blue/30 shadow-lg" : ""
-              )}
-            >
-              <div className={cn(
-                "p-4 rounded-2xl mb-4 transition-colors duration-500",
-                isFunMode ? "bg-ios-blue/10 text-ios-blue" : "bg-black/5 dark:bg-white/5 text-ios-gray"
-              )}>
-                <hobby.icon size={28} />
-              </div>
-              <h3 className="font-bold text-base mb-1 text-black dark:text-white">{hobby.name}</h3>
-              <p className="text-[10px] text-ios-gray font-bold uppercase tracking-widest">{hobby.desc}</p>
-            </motion.div>
-          ))}
+          {hobbies.map((hobby, i) => {
+            const IconComponent = iconMap[hobby.icon] || Pizza;
+            return (
+              <motion.div
+                key={hobby.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ scale: 1.05, rotate: isFunMode ? [0, -2, 2, 0] : 0 }}
+                className={cn(
+                  "ios-card flex flex-col items-center text-center transition-all duration-500",
+                  isFunMode ? "border-ios-blue/30 shadow-lg" : ""
+                )}
+              >
+                <div className={cn(
+                  "p-4 rounded-2xl mb-4 transition-colors duration-500",
+                  isFunMode ? "bg-ios-blue/10 text-ios-blue" : "bg-black/5 text-ios-gray"
+                )}>
+                  <IconComponent size={28} />
+                </div>
+                <h3 className="font-bold text-base mb-1 text-black">{hobby.name}</h3>
+                <p className="text-[10px] text-ios-gray font-bold uppercase tracking-widest">{hobby.description}</p>
+              </motion.div>
+            );
+          })}
         </div>
 
         <AnimatePresence>
@@ -98,13 +126,9 @@ export const FunMode: React.FC = () => {
                 />
                 <h4 className="text-2xl font-bold mb-8 text-ios-blue">Favorite Movies 🎬</h4>
                 <div className="space-y-4">
-                  {[
-                    { title: 'Money Heist', badge: 'Series', extra: true },
-                    { title: 'Lucky Bhaskar', badge: 'Must Watch' },
-                    { title: 'Dirty', badge: 'Classic' }
-                  ].map((movie, idx) => (
-                    <div key={idx} className="flex items-center justify-between p-4 bg-black/5 dark:bg-white/5 rounded-2xl">
-                      <span className="text-base font-bold text-black dark:text-white">{movie.title}</span>
+                  {movies.map((movie, idx) => (
+                    <div key={idx} className="flex items-center justify-between p-4 bg-black/5 rounded-2xl">
+                      <span className="text-base font-bold text-black">{movie.title}</span>
                       <div className="flex items-center space-x-3">
                         {movie.extra && (
                           <div className="flex space-x-1">

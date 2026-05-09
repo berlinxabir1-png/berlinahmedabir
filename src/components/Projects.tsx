@@ -1,8 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Code } from 'lucide-react';
+import { usePortfolioData } from '../hooks/usePortfolioData';
 
-const projects = [
+interface Project {
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  github: string;
+  live: string;
+  color: string;
+  type: string;
+}
+
+const defaultProjects: Project[] = [
   {
     title: 'Study Tracker',
     description: 'A comprehensive tool for managing study time, tracking tasks, and optimizing academic productivity.',
@@ -36,6 +48,8 @@ const projects = [
 ];
 
 export const Projects: React.FC = () => {
+  const { data: projects } = usePortfolioData<Project[]>('projects', defaultProjects);
+
   return (
     <section id="projects" className="py-32 px-6">
       <div className="max-w-7xl mx-auto">
@@ -92,9 +106,29 @@ export const Projects: React.FC = () => {
                   {project.description}
                 </p>
                 
-                <div className="flex items-center space-x-3 text-sm font-bold text-ios-gray/60 italic">
-                  <Code size={18} />
-                  <span>Internal Development</span>
+                <div className="flex items-center space-x-4">
+                  {project.live && (
+                    <a 
+                      href={project.live} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 text-sm font-bold text-ios-blue hover:underline"
+                    >
+                      <ExternalLink size={18} />
+                      <span>Live Demo</span>
+                    </a>
+                  )}
+                  {project.github && (
+                    <a 
+                      href={project.github} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 text-sm font-bold text-ios-gray hover:text-black transition-colors"
+                    >
+                      <Github size={18} />
+                      <span>GitHub</span>
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>

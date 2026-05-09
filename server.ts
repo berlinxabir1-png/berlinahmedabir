@@ -6,8 +6,8 @@ import nodemailer from "nodemailer";
 
 // Supabase initialization
 const getSupabase = () => {
-  const url = process.env.SUPABASE_URL || "https://dxnuvpmbupilgmmczedi.supabase.co";
-  const key = process.env.SUPABASE_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR4bnV2cG1idXBpbGdtbWN6ZWRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM3NTY0NDYsImV4cCI6MjA4OTMzMjQ0Nn0.RvIKv7tbVjNPEaKX1jrfkUCtAWRR4syoMMNBAd6o1c0";
+  const url = process.env.SUPABASE_URL || "https://vvagmeovrnmxlbtprtze.supabase.co";
+  const key = process.env.SUPABASE_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ2YWdtZW92cm5teGxidHBydHplIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzNDUyNDAsImV4cCI6MjA5MzkyMTI0MH0.85JzU7tiNRoaA34ogf5bu-0-lUsz4z0LdvJ6m-_-t5A";
   
   if (!url || !url.startsWith('http')) {
     return null;
@@ -32,7 +32,61 @@ async function startServer() {
 
   app.use(express.json());
 
-  // API Routes
+  // API Routes for Dynamic Data
+  app.get("/api/profile", async (req, res) => {
+    try {
+      if (!supabase) return res.status(500).json({ error: "DB not connected" });
+      const { data, error } = await supabase.from("profile").select("*").single();
+      if (error) throw error;
+      res.json(data);
+    } catch (err) {
+      res.status(500).json({ error: "Failed to fetch profile" });
+    }
+  });
+
+  app.get("/api/projects", async (req, res) => {
+    try {
+      if (!supabase) return res.status(500).json({ error: "DB not connected" });
+      const { data, error } = await supabase.from("projects").select("*").order('created_at', { ascending: false });
+      if (error) throw error;
+      res.json(data);
+    } catch (err) {
+      res.status(500).json({ error: "Failed to fetch projects" });
+    }
+  });
+
+  app.get("/api/skills", async (req, res) => {
+    try {
+      if (!supabase) return res.status(500).json({ error: "DB not connected" });
+      const { data, error } = await supabase.from("skills").select("*").order('percentage', { ascending: false });
+      if (error) throw error;
+      res.json(data);
+    } catch (err) {
+      res.status(500).json({ error: "Failed to fetch skills" });
+    }
+  });
+
+  app.get("/api/about-cards", async (req, res) => {
+    try {
+      if (!supabase) return res.status(500).json({ error: "DB not connected" });
+      const { data, error } = await supabase.from("about_cards").select("*");
+      if (error) throw error;
+      res.json(data);
+    } catch (err) {
+      res.status(500).json({ error: "Failed to fetch about cards" });
+    }
+  });
+
+  app.get("/api/hobbies", async (req, res) => {
+    try {
+      if (!supabase) return res.status(500).json({ error: "DB not connected" });
+      const { data, error } = await supabase.from("hobbies").select("*");
+      if (error) throw error;
+      res.json(data);
+    } catch (err) {
+      res.status(500).json({ error: "Failed to fetch hobbies" });
+    }
+  });
   app.get("/api/votes", async (req, res) => {
     try {
       if (!supabase) {

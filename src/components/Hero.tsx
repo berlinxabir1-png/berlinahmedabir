@@ -2,18 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
 import { ArrowRight, Download, Sparkles, Cake } from 'lucide-react';
+import { usePortfolioData } from '../hooks/usePortfolioData';
 
-const BirthdayCountdown = () => {
+const BirthdayCountdown = ({ birthday }: { birthday: string }) => {
   const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number; minutes: number; seconds: number }>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
     const calculateTimeLeft = () => {
       const now = new Date();
+      const birthDate = new Date(birthday);
       const currentYear = now.getFullYear();
-      let nextBirthday = new Date(currentYear, 0, 8); // January 8th
+      let nextBirthday = new Date(currentYear, birthDate.getMonth(), birthDate.getDate());
 
       if (now > nextBirthday) {
-        nextBirthday = new Date(currentYear + 1, 0, 8);
+        nextBirthday = new Date(currentYear + 1, birthDate.getMonth(), birthDate.getDate());
       }
 
       const difference = nextBirthday.getTime() - now.getTime();
@@ -31,7 +33,7 @@ const BirthdayCountdown = () => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [birthday]);
 
   return (
     <div className="flex space-x-2 text-[10px] font-bold text-ios-blue uppercase tracking-widest">
@@ -44,7 +46,16 @@ const BirthdayCountdown = () => {
 };
 
 export const Hero: React.FC = () => {
-  const name = "Berlin Ahmed Abir";
+  const { data: profile } = usePortfolioData('profile', {
+    name: "Berlin Ahmed Abir",
+    tagline: "My brain runs faster than a computer",
+    typewriter_words: ['Frontend Developer', 'React Enthusiast', 'Problem Solver'],
+    description: "Architecting high-performance digital solutions with a relentless focus on logic, efficiency, and creative problem-solving.",
+    profile_image: "https://img.freepik.com/premium-vector/vector-teenager-wearing-cool-outfit_1310295-648.jpg?semt=ais_hybrid&w=740&q=80",
+    birthday: "1947-01-08",
+    projects_count: "50+",
+    availability: "Available for Work"
+  });
   
   return (
     <section id="home" className="min-h-screen flex items-center justify-center pt-32 pb-20 px-6 relative overflow-hidden">
@@ -66,14 +77,14 @@ export const Hero: React.FC = () => {
             className="inline-flex items-center space-x-2 px-4 py-2 rounded-2xl bg-white/40 backdrop-blur-md border border-white/20 text-ios-blue text-xs font-bold mb-10 shadow-sm"
           >
             <Sparkles size={14} className="animate-spin-slow" />
-            <span className="tracking-tight">"My brain runs faster than a computer"</span>
+            <span className="tracking-tight">"{profile.tagline}"</span>
           </motion.div>
           
           <div className="mb-8">
             <h1 className="text-6xl md:text-8xl font-black leading-[0.9] tracking-tighter text-black mb-4">
               <span className="block opacity-50 text-4xl md:text-5xl font-bold mb-2">I'm</span>
               <div className="flex flex-wrap">
-                {name.split(" ").map((word, i) => (
+                {profile.name.split(" ").map((word: string, i: number) => (
                   <motion.span
                     key={i}
                     initial={{ opacity: 0, y: 20 }}
@@ -96,7 +107,7 @@ export const Hero: React.FC = () => {
                 A{' '}
                 <span className="text-black border-b-4 border-ios-blue/30 pb-1">
                   <Typewriter
-                    words={['Frontend Developer', 'React Enthusiast', 'Problem Solver']}
+                    words={profile.typewriter_words}
                     loop={0}
                     cursor
                     cursorStyle="_"
@@ -115,13 +126,14 @@ export const Hero: React.FC = () => {
             transition={{ delay: 0.8 }}
             className="text-xl text-ios-gray max-w-lg mb-12 leading-relaxed font-medium"
           >
-            Architecting high-performance digital solutions with a relentless focus on logic, efficiency, and creative problem-solving.
+            {profile.description}
           </motion.p>
           
           <div className="flex flex-wrap gap-6">
             <motion.button
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
               className="ios-button-primary flex items-center space-x-3 px-8 py-5 text-lg shadow-xl shadow-ios-blue/20"
             >
               <span className="font-bold">View Projects</span>
@@ -152,7 +164,7 @@ export const Hero: React.FC = () => {
             
             <div className="relative w-72 h-72 md:w-[450px] md:h-[450px] rounded-[24%] overflow-hidden border-[12px] border-white shadow-2xl transform transition-transform duration-700 group-hover:scale-[1.02] group-hover:rotate-1">
               <img 
-                src="https://img.freepik.com/premium-vector/vector-teenager-wearing-cool-outfit_1310295-648.jpg?semt=ais_hybrid&w=740&q=80" 
+                src={profile.profile_image} 
                 alt="Profile" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
@@ -174,8 +186,10 @@ export const Hero: React.FC = () => {
                 </div>
                 <div className="text-ios-blue font-extrabold text-sm tracking-tight">Birthday</div>
               </div>
-              <div className="text-xs text-ios-gray font-bold mb-3 opacity-70">Jan 08, 1947</div>
-              <BirthdayCountdown />
+              <div className="text-xs text-ios-gray font-bold mb-3 opacity-70">
+                {new Date(profile.birthday).toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' })}
+              </div>
+              <BirthdayCountdown birthday={profile.birthday} />
             </motion.div>
             
             <motion.div
@@ -184,7 +198,7 @@ export const Hero: React.FC = () => {
               className="absolute -bottom-8 -left-12 ios-glass p-6 rounded-[2rem] shadow-2xl border-white/40"
             >
               <div className="flex flex-col">
-                <span className="text-ios-blue font-black text-4xl leading-none">50+</span>
+                <span className="text-ios-blue font-black text-4xl leading-none">{profile.projects_count}</span>
                 <span className="text-[10px] text-ios-gray font-black uppercase tracking-[0.2em] mt-1">Projects Done</span>
               </div>
             </motion.div>
@@ -200,7 +214,7 @@ export const Hero: React.FC = () => {
                 <div className="w-3 h-3 bg-emerald-500 rounded-full animate-ping absolute inset-0" />
                 <div className="w-3 h-3 bg-emerald-500 rounded-full relative" />
               </div>
-              <span className="text-xs font-bold text-black tracking-tight">Available for Work</span>
+              <span className="text-xs font-bold text-black tracking-tight">{profile.availability}</span>
             </motion.div>
           </div>
         </motion.div>

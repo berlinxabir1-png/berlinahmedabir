@@ -1,8 +1,39 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { User, GraduationCap, Heart, MapPin, Coffee, Plane } from 'lucide-react';
+import { User, GraduationCap, Heart, MapPin, Coffee, Plane, BookOpen } from 'lucide-react';
+import { usePortfolioData } from '../hooks/usePortfolioData';
+
+interface AboutData {
+  intro_title: string;
+  p1: string;
+  p2: string;
+  city: string;
+  college: string;
+  born_place: string;
+  relation_status: string;
+  favorite_subject: string;
+  travel: { label: string; value: string; description: string; seed: string }[];
+}
+
+const defaultAbout: AboutData = {
+  intro_title: "I thrive at the intersection of logic and creativity.",
+  p1: "I am deeply passionate about the art of coding, constantly pushing myself to build innovative solutions that challenge the status quo. I find immense satisfaction in dissecting complex problems and refining my technical craft every single day.",
+  p2: "Beyond the terminal, I am a keen observer of history and politics, always seeking to understand the intricate systems and narratives that shape our modern world. This analytical mindset fuels both my personal growth and my professional approach to development.",
+  city: "Bhola, Bangladesh",
+  college: "Naziur Rahman College (12th)",
+  born_place: "Dhaka, Bangladesh",
+  relation_status: "Taken",
+  favorite_subject: "Civics",
+  travel: [
+    { label: 'Recent Travel', value: "Cox's Bazar", description: "World's longest sea beach", seed: 'coxsbazar' },
+    { label: 'Next Destination', value: "Cox's Bazar", description: "The world's longest natural sea beach", seed: 'coxsbazar_next' },
+    { label: 'Next Destination', value: "Bandarban", description: "The queen of hills", seed: 'bandarban' }
+  ]
+};
 
 export const About: React.FC = () => {
+  const { data: about } = usePortfolioData<AboutData>('about-cards', defaultAbout);
+
   return (
     <section id="about" className="py-32 px-6 relative">
       <div className="max-w-7xl mx-auto">
@@ -11,7 +42,7 @@ export const About: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-black dark:text-white"
+            className="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-black"
           >
             About <span className="text-ios-blue">Me</span>
           </motion.h2>
@@ -25,16 +56,12 @@ export const About: React.FC = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-black dark:text-white leading-tight">
-              I thrive at the intersection of logic and creativity.
+            <h3 className="text-2xl md:text-3xl font-bold text-black leading-tight">
+              {about.intro_title}
             </h3>
             <div className="space-y-6 text-lg text-ios-gray font-medium leading-relaxed">
-              <p>
-                I am deeply passionate about the art of coding, constantly pushing myself to build innovative solutions that challenge the status quo. I find immense satisfaction in dissecting complex problems and refining my technical craft every single day.
-              </p>
-              <p>
-                Beyond the terminal, I am a keen observer of history and politics, always seeking to understand the intricate systems and narratives that shape our modern world. This analytical mindset fuels both my personal growth and my professional approach to development.
-              </p>
+              <p>{about.p1}</p>
+              <p>{about.p2}</p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-8">
@@ -44,7 +71,7 @@ export const About: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-[11px] text-ios-gray font-bold uppercase tracking-widest mb-0.5">Current City</div>
-                  <div className="text-base font-semibold text-black dark:text-white">Bhola, Bangladesh</div>
+                  <div className="text-base font-semibold text-black">{about.city}</div>
                 </div>
               </div>
               <div className="ios-card flex items-center space-x-4">
@@ -53,7 +80,7 @@ export const About: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-[11px] text-ios-gray font-bold uppercase tracking-widest mb-0.5">Current College</div>
-                  <div className="text-base font-semibold text-black dark:text-white">Naziur Rahman College (12th)</div>
+                  <div className="text-base font-semibold text-black">{about.college}</div>
                 </div>
               </div>
               <div className="ios-card flex items-center space-x-4">
@@ -62,7 +89,7 @@ export const About: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-[11px] text-ios-gray font-bold uppercase tracking-widest mb-0.5">Born Place</div>
-                  <div className="text-base font-semibold text-black dark:text-white">Dhaka, Bangladesh</div>
+                  <div className="text-base font-semibold text-black">{about.born_place}</div>
                 </div>
               </div>
               <div className="ios-card flex items-center space-x-4">
@@ -71,17 +98,22 @@ export const About: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-[11px] text-ios-gray font-bold uppercase tracking-widest mb-0.5">Relation Status</div>
-                  <div className="text-base font-semibold text-black dark:text-white">Taken</div>
+                  <div className="text-base font-semibold text-black">{about.relation_status}</div>
+                </div>
+              </div>
+              <div className="ios-card flex items-center space-x-4">
+                <div className="p-3 bg-ios-blue/10 rounded-2xl text-ios-blue">
+                  <BookOpen size={24} />
+                </div>
+                <div>
+                  <div className="text-[11px] text-ios-gray font-bold uppercase tracking-widest mb-0.5">Favorite Subject</div>
+                  <div className="text-base font-semibold text-black">{about.favorite_subject}</div>
                 </div>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8">
-              {[
-                { label: 'Recent Travel', value: "Cox's Bazar", desc: "World's longest sea beach", seed: 'coxsbazar' },
-                { label: 'Next Destination', value: "Cox's Bazar", desc: "The world's longest natural sea beach", seed: 'coxsbazar_next' },
-                { label: 'Next Destination', value: "Bandarban", desc: "The queen of hills", seed: 'bandarban' }
-              ].map((item, i) => (
+              {about.travel.map((item, i) => (
                 <motion.div 
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
@@ -96,7 +128,7 @@ export const About: React.FC = () => {
                     </div>
                     <div>
                       <div className="text-[10px] text-ios-gray font-bold uppercase tracking-widest mb-0.5">{item.label}</div>
-                      <div className="text-sm font-semibold text-black dark:text-white">{item.value}</div>
+                      <div className="text-sm font-semibold text-black">{item.value}</div>
                     </div>
                   </div>
                   <div className="relative h-32 overflow-hidden">
@@ -107,7 +139,7 @@ export const About: React.FC = () => {
                       referrerPolicy="no-referrer"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
-                      <span className="text-xs text-white font-medium">{item.desc}</span>
+                      <span className="text-xs text-white font-medium">{item.description}</span>
                     </div>
                   </div>
                 </motion.div>
