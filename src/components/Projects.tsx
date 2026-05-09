@@ -65,7 +65,7 @@ export const Projects: React.FC = () => {
           <div className="w-16 h-1.5 bg-ios-blue rounded-full" />
         </div>
 
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-10">
           {projects.map((project, i) => (
             <motion.div
               key={project.title}

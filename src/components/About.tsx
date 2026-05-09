@@ -64,7 +64,7 @@ export const About: React.FC = () => {
               <p>{about.p2}</p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 pt-8">
               <div className="ios-card flex items-center space-x-4">
                 <div className="p-3 bg-ios-blue/10 rounded-2xl text-ios-blue">
                   <MapPin size={24} />

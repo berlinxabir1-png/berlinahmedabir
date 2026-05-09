@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -10,7 +11,8 @@ import { FunMode } from './components/FunMode';
 import { VoteSystem } from './components/VoteSystem';
 import { Contact } from './components/Contact';
 import { AnimatedBackground } from './components/AnimatedBackground';
-import { Sparkles, Moon, Sun } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
+import { AdminDashboard } from './pages/AdminDashboard';
 
 const LoadingScreen = () => (
   <motion.div
@@ -57,6 +59,23 @@ const Footer = () => (
   </footer>
 );
 
+const Portfolio = () => (
+  <>
+    <Navbar />
+    <main className="relative z-10">
+      <Hero />
+      <About />
+      <FavoriteSubject />
+      <Skills />
+      <Projects />
+      <FunMode />
+      <VoteSystem />
+      <Contact />
+    </main>
+    <Footer />
+  </>
+);
+
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -72,26 +91,19 @@ export default function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen selection:bg-ios-blue/20 selection:text-ios-blue">
-      <AnimatePresence>
-        {isLoading && <LoadingScreen />}
-      </AnimatePresence>
+    <Router>
+      <div className="relative min-h-screen selection:bg-ios-blue/20 selection:text-ios-blue">
+        <AnimatePresence>
+          {isLoading && <LoadingScreen />}
+        </AnimatePresence>
 
-      <AnimatedBackground />
-      <Navbar />
-      
-      <main className="relative z-10">
-        <Hero />
-        <About />
-        <FavoriteSubject />
-        <Skills />
-        <Projects />
-        <FunMode />
-        <VoteSystem />
-        <Contact />
-      </main>
-
-      <Footer />
-    </div>
+        <AnimatedBackground />
+        
+        <Routes>
+          <Route path="/" element={<Portfolio />} />
+          <Route path="/admin/*" element={<AdminDashboard />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }

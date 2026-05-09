@@ -195,6 +195,62 @@ async function startServer() {
     }
   });
 
+  // Admin Update Routes
+  app.post("/api/admin/profile", async (req, res) => {
+    try {
+      if (!supabase) return res.status(500).json({ error: "DB not connected" });
+      const { data, error } = await supabase.from("profile").update(req.body).match({ id: req.body.id || 1 });
+      if (error) throw error;
+      res.json({ success: true, data });
+    } catch (err) {
+      res.status(500).json({ error: "Failed to update profile" });
+    }
+  });
+
+  app.post("/api/admin/projects", async (req, res) => {
+    try {
+      if (!supabase) return res.status(500).json({ error: "DB not connected" });
+      const { data, error } = await supabase.from("projects").upsert(req.body);
+      if (error) throw error;
+      res.json({ success: true, data });
+    } catch (err) {
+      res.status(500).json({ error: "Failed to update projects" });
+    }
+  });
+
+  app.delete("/api/admin/projects/:id", async (req, res) => {
+    try {
+      if (!supabase) return res.status(500).json({ error: "DB not connected" });
+      const { error } = await supabase.from("projects").delete().match({ id: req.params.id });
+      if (error) throw error;
+      res.json({ success: true });
+    } catch (err) {
+      res.status(500).json({ error: "Failed to delete project" });
+    }
+  });
+
+  app.post("/api/admin/skills", async (req, res) => {
+    try {
+      if (!supabase) return res.status(500).json({ error: "DB not connected" });
+      const { data, error } = await supabase.from("skills").upsert(req.body);
+      if (error) throw error;
+      res.json({ success: true, data });
+    } catch (err) {
+      res.status(500).json({ error: "Failed to update skills" });
+    }
+  });
+
+  app.delete("/api/admin/skills/:id", async (req, res) => {
+    try {
+      if (!supabase) return res.status(500).json({ error: "DB not connected" });
+      const { error } = await supabase.from("skills").delete().match({ id: req.params.id });
+      if (error) throw error;
+      res.json({ success: true });
+    } catch (err) {
+      res.status(500).json({ error: "Failed to delete skill" });
+    }
+  });
+
   // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
